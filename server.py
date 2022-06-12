@@ -1,4 +1,5 @@
 import socket
+import pickle
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -13,8 +14,13 @@ while True:
 
     name = clientsocket.recv(1024).decode('utf-8')
     print(name)
+
+
+    d = {1: 'Hey', 2:'There'}
+    msg = pickle.dumps(d)
+    # print(msg)
     
-    clientsocket.send(bytes("Hey there!!!","utf-8"))
+    clientsocket.send(bytes(msg))
 
 
     
